@@ -1,0 +1,198 @@
+---
+layout: default
+---
+<!-- SPECIAL EFFECTS - USE ONLY 1 DEPENDING ON THE EVENT -->
+<!-- WINTER SOLSTICE % include_relative effects/snowflakes.html %} -->
+
+
+<div class="no-pad-top" id="index-page">
+  <div class="container">
+
+<!--   Some very ugly way of spacing  -->
+    <div class="section">
+	    <p>
+	    </p>
+    </div>
+
+<!--   BÁNNER   -->
+    <div class="section">
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="row center">
+	    <a href="/ENEF2023"><img id="banner ENEF" width="90%" src="/img/eventos/2023-ENEF/BannerCover.png" alt="Banner ENEF"></a>
+          </div>
+        </div>
+
+        <div class="col s12 m6">
+          <div class="row center">
+	    <a href="/eventos-internacionales/2023/07/26/KipThorne"><img id="banner KipThorne" width="90%" src="/img/eventos/2023-ENEF/KipThorneBanner.png" alt="Banner Kip Thorne"></a>
+	  </div>
+        </div>
+      </div>
+    </div>
+	  
+<!--   LOGO & CONÓCENOS VIDEO   -->
+    <div class="section">
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="icon-block">
+	    <img id="index-top-logo" src="/img/logos/gdee-rsef.png" alt="Logo Estudiantes RSEF">
+          </div>
+        </div>
+
+        <div class="col s12 m6">
+          <div class="icon-block">
+	    <center><iframe width="100%" height="270" src="https://www.youtube.com/embed/B327Xucbb30?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></center>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!--   Some very ugly way of spacing  -->
+    <div class="section">
+	    <p>
+	    </p>
+    </div>
+
+<!--   ICON SECTION   -->
+    <div class="section">
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="icon-block">
+            <h2 class="center">Grupo de Estudiantes RSEF</h2>
+
+            <p class="light" align="justify">El Grupo de Estudiantes de la Real Sociedad Española de Física busca reunir a todos los estudiantes de física de España, proporcionarles nuevas oportunidades a nivel nacional e internacional y ayudar a mejorar la divulgación de la física y su enseñanza.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m6">
+          <div class="icon-block">
+            <h2 class="center">IAPS</h2>
+            <p class="light" align="justify">La Asociación Internacional de Estudiantes de Física promueve desde 1987 la colaboración entre estudiantes y asociaciones de física a nivel mundial. Sus miembros están representados por comités nacionales y locales. Entre todos, IAPS representa a más de 60.000 estudiantes.</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="row center">
+		  <a href="{{ site.url }}/about/" id="about-button" class="btn-large waves-effect waves-light">Conócenos</a>
+          </div>
+        </div>
+        <div class="col s12 m6">
+          <div class="row center">
+		  <a href="https://www.iaps.info/" target="_blank" id="iaps-button" class="btn-large waves-effect waves-light">Descubre IAPS</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- EVENT SECTION -->
+  <div class="section">
+    <h3>
+      Nuestros eventos
+    </h3>
+    <p>
+      El Grupo de Estudiantes de la RSEF organiza actividades para estudiantes de física españoles y les ofrece la posibilidad de participar en todos los eventos abiertos a miembros de IAPS. ¿Que cuáles son esos eventos, preguntas? ¡Echa un vistazo!
+    </p>
+      <div class="row">
+        <div class="col s12 m7">
+          <ul class="slider" id="foto-eventi">
+            <ul class="slides">
+              {% assign loopindex = 0 %}
+              {% assign array = site.events | reverse %}
+              {% for event in array %}
+                {% if event.categories contains "eventos-nacionales" or "eventos-internacionales" or "eventoespecial" %}
+                  <li href="{{ event.site }}">
+                    <a href="{{ event.site }}">
+                      <img src="{{ event.cover }}" alt="{{ event.title }}">
+                    </a>
+                    <div class="caption left-align">
+		      {% if event.shorttitle %}
+                    	<h4>{{ event.shorttitle }}</h4>
+		      {% else %}
+                    	<h4>{{ event.title }}</h4>
+		      {% endif %}
+		      {% if event.hidedataincover == "Yes" %}
+		      {% else %}
+                    	<p class="white-text">
+				{{ event.place }},
+                        	<br>
+                        	{{ event.startingdate | date: '%b %Y' }}
+                        </p>
+		      {% endif %}
+                    </div>
+                  </li>
+                  {% assign loopindex = loopindex | plus: 1%}
+                {% endif %}
+<!-- NUMBER OF SLIDES ON INDEX -->
+                {% if loopindex == 4 %}
+                  {% break %}
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </ul>
+        </div>
+        <div class="col s12 m5">
+		      {% include eventos-pagina-principal.html %}
+        </div>
+      </div>
+    </div>
+<!-- END OF EVENT SECTION -->
+
+<!-- NEWS SECTION -->
+<!--    <div class="row">
+      <div class="col s12 m12">
+        <h3>Últimas Noticias</h3>
+        <div class="blog-index">
+          {% assign maxCountBlog = 3 %}
+          {% assign countBlog = 0 %}
+          {% for post in site.categories['noticias'] %}
+            {% if post.hidden != true and countBlog < maxCountBlog %}
+              {% assign countBlog = countBlog | plus: 1 %}
+              {% assign post = site.posts.first %}
+              {% assign content = post.excerpt %}
+              {% include post_detail.html %}
+            {% endif %}
+          {% endfor %}
+          <div class="divider"></div>
+        </div>
+      </div>
+    </div>  -->
+<!-- END OF NEWS SECTION -->
+
+<!-- QUANTUM-SOCIETY.COM COLLABORATION -->
+<!-- <iframe src="https://quantum-society.com" width="100%" height="1000" frameborder="5" margin="40 40 40 40"></iframe> -->
+
+<!-- BLOG -->
+    <div class="section">
+      <div class="row">
+        <div class="col s12 m12">
+          <h3>Lo último del Blog</h3>
+          <div class="blog-index">
+            {% assign maxCountBlog = 3 %}
+            {% assign countBlog = 0 %}
+            {% for post in site.categories['blog'] %}
+              {% if post.hidden != true and countBlog < maxCountBlog %}
+                {% assign countBlog = countBlog | plus: 1 %}
+                {% assign post = site.posts.first %}
+                {% assign content = post.excerpt %}
+                {% include post_detail.html %}
+              {% endif %}
+            {% endfor %}
+            <div class="divider"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row center">
+           <a href="{{ site.url }}/blog/" id="about-button" class="btn-large waves-effect waves-light">Accede al Blog</a>
+      </div>
+    </div>
+<!-- END OF BLOG SECTION -->
+  </div>
+</div>
+
+<!-- BANNER -->
+{% include banner.html %}
+
+{% include eventos-pagina-principal-modal.html %}
+{% include schema.html %}
